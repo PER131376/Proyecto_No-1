@@ -1,0 +1,29 @@
+config_io:
+    bsf	    STATUS, 5   ;banco  11
+    bsf	    STATUS, 6	;Banksel ANSEL
+    clrf    ANSEL	;pines digitales
+    clrf    ANSELH
+    
+    bsf	    STATUS, 5	;banco 01
+    bcf	    STATUS, 6	;Banksel TRISA
+    clrf    TRISA	;PORTA A salida
+    clrf    TRISC
+    clrf    TRISD
+    clrf    TRISE
+    bsf	    TRISB, MODO
+    bsf	    TRISB, INC
+    bsf	    TRISB, DECRE
+    
+    bcf	    OPTION_REG,	7   ;RBPU Enable bit - Habilitar
+    bsf	    WPUB, MODO
+    bsf	    WPUB, INC
+    bsf	    WPUB, DECRE
+    
+    bcf	    STATUS, 5	;banco 00
+    bcf	    STATUS, 6	;Banksel PORTA
+    clrf    PORTA	;Valor incial 0 en puerto A
+    clrf    PORTC
+    clrf    PORTB
+    clrf    PORTD
+    return
+    
